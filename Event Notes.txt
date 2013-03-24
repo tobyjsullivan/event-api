@@ -1,0 +1,28 @@
+Event Queues
+- Events should belong to a specific event queue
+- These queues should be decided client-side
+- The server can store events separately if they belong to different queues
+- An example might be all transactions associated with a specific shopping cart. Creating cart, adding and removing items, then purchasing or closing out the cart would all belong to one queue.
+- Once a queue is no longer needed by the active application, it can be "closed". This allows the event store to place the entire queue into a form of deep storage.
+- Additionally, once the queue is closed, any reference to it can be removed from the state DB.
+- Closed queues can no longer be written to but they can possibly be read (might be application dependent).
+
+
+Q: How do we transmit control information like closing queues?
+- Could have a special event type. For example, event type "special::close_queue" with a queue id matching an existing queue could close out that queue.
+
+Q: Is the state DB in integral part of the event store or should it simply be application-specific and derived from event handlers?
+- I think application specific makes far more sense.
+
+Event Handler Framework
+- There are two types of event handlers: Live and Replay. 
+- A Replay handler will need to access all past events that meet criteria and process. 
+- A Live handler will need to be notified of each new event matching its criteria then process immediately.
+- Theoretically, a new Live handler will also need to process past events like a Replay handler then once current state is determined, stay up-to-date with notifications.
+
+We need some form of communication that allows Event Handlers to request events and, for Live handlers, to subscribe to event notifications.
+Request latest 1000 events of type "item_added" and "item_removed":
+GET /?event_type=item_added,item_removed&limit=1000&order=latest
+
+Request page 2 of events at 1000/page (i.e., events 1000-1999) ordered by oldest to newest of type "user_created":
+GET /?event_type=user_created&limit=1000&page=2&order=oldest

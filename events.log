@@ -1,0 +1,9 @@
+{"message":"Hello, World1","timestamp":"Thu Mar 14 23:15:15 PDT 2013"}
+{"message":"Posture","timestamp":"Thu Mar 14 23:15:19 PDT 2013"}
+{"message":"Fixture is good. :)","timestamp":"Thu Mar 14 23:15:29 PDT 2013"}
+{"message":"exit","timestamp":"Thu Mar 14 23:15:32 PDT 2013"}
+{"message":"Hello, World!","timestamp":"Sat Mar 16 16:14:43 PDT 2013","event_type":"message_sent"}
+{"message":"I like that this works!","timestamp":"Sat Mar 16 16:14:48 PDT 2013","event_type":"message_sent"}
+{"message":"Do you think?","timestamp":"Sat Mar 16 16:14:55 PDT 2013","event_type":"message_sent"}
+{"message":"Better date formats now... hopefully.","timestamp":"2013-03-16T16:30:46.053-0700","event_type":"message_sent"}
+{"message":"GMT Time would be ideal, but at least we can specify the time zone.","timestamp":"2013-03-16T16:31:01.039-0700","event_type":"message_sent"}
